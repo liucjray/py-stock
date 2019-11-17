@@ -8,9 +8,9 @@ class DividendParserServiceTest(unittest.TestCase):
     def setUp(self):
         self.dividend = DividendParserService('0056')
 
-        fake_html = open('html/0056.html')
-        self.dividend.set_html(fake_html.read()).set_bs4()
-        fake_html.close()
+        with open('html/0056.html', encoding="utf-8") as fake_html:
+            self.dividend.set_html(fake_html.read()).set_bs4()
+            fake_html.close()
 
     def test_get_name(self):
         expect = "0056元大高股息"
